@@ -1,0 +1,6 @@
+browser-use
+langchain-anthropic
+supabase
+playwright
+flask
+apscheduler
