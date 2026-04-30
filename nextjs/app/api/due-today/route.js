@@ -1,6 +1,7 @@
-import { supabase } from '../../../lib/supabase'
+import { createSupabaseClient } from '../../../lib/supabase'
 
 export async function GET() {
+  const supabase = createSupabaseClient()
   const today = new Date().toISOString().split('T')[0]
 
   const { data, error } = await supabase
