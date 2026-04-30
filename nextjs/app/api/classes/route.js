@@ -1,6 +1,7 @@
-import { supabase } from '../../../lib/supabase'
+import { createSupabaseClient } from '../../../lib/supabase'
 
 export async function GET() {
+  const supabase = createSupabaseClient()
   const { data, error } = await supabase
     .from('classes')
     .select('*')
@@ -11,6 +12,7 @@ export async function GET() {
 }
 
 export async function POST(req) {
+  const supabase = createSupabaseClient()
   const { name } = await req.json()
   if (!name) return Response.json({ error: 'name required' }, { status: 400 })
 
@@ -25,6 +27,7 @@ export async function POST(req) {
 }
 
 export async function DELETE(req) {
+  const supabase = createSupabaseClient()
   const { id } = await req.json()
   const { error } = await supabase.from('classes').delete().eq('id', id)
   if (error) return Response.json({ error: error.message }, { status: 500 })
